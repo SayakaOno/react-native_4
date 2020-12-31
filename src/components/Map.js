@@ -5,7 +5,7 @@ import { Context as LocationContext } from '../context/LocationContext';
 
 const TrackCreateSreen = () => {
   const {
-    state: { currentLocation }
+    state: { currentLocation, locations }
   } = useContext(LocationContext);
 
   if (!currentLocation) {
@@ -24,9 +24,10 @@ const TrackCreateSreen = () => {
       <Circle
         center={currentLocation.coords}
         radius={30}
-        strokeColor="rgba(158, 158, 255, 1.0"
+        strokeColor="rgba(158, 158, 255, 1.0)"
         fillColor="rgba(158,158,255, 0.3)"
       />
+      <Polyline coordinates={locations.map(loc => loc.coords)} />
     </MapView>
   );
 };
